@@ -1,0 +1,310 @@
+
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>TIGER</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <base href="/"> -->
+
+        <!--FACEBOOK-->
+    <!-- <meta property="og:image" content="https://jonbarron.info/mipnerf/img/rays_square.png"> -->
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="682">
+    <meta property="og:image:height" content="682">
+    <meta property="og:type" content="website" />
+    <!-- <meta property="og:url" content="https://jonbarron.info/mipnerf/"/> -->
+    <meta property="og:title" content="TIGER" />
+    <meta property="og:description" content="Project page for TIGER: Text-Instructed 3D Gaussian Retrieval and Coherent Editing." />
+
+        <!--TWITTER-->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="TIGER" />
+    <meta name="twitter:description" content="Project page for TIGER: Text-Instructed 3D Gaussian Retrieval and Coherent Editing." />
+    <!-- <meta name="twitter:image" content="https://jonbarron.info/mipnerf/img/rays_square.png" /> -->
+
+
+<!--     <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
+  <!-- <link rel="icon" type="image/png" href="img/seal_icon.png"> -->
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+    
+    <script src="js/app.js"></script>
+</head>
+
+<body>
+    <div class="container" id="main">
+        <div class="row">
+            <h2 class="col-md-12 text-center">
+                <b>TIGER</b>: Text-Instructed <br> 3D Gaussian Retrieval and Coherent Editing</br>
+                <!-- <small>
+                    ICCV 2021 (Oral, Best Paper Honorable Mention)
+                </small> -->
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="list-inline">
+                    <li>
+                        
+                        Teng Xu
+                        
+                    </li>
+                    <li>
+                        
+                        Jiamin Chen
+                        
+                    </li>
+                    <li>
+                        
+                        Peng Chen
+                        
+                    </li>
+                    <li>
+                        
+                        Youjia Zhang
+                        
+                    </li>
+                    <li>
+                        
+                        Junqing Yu
+                        
+                    </li>
+                    <li>
+                        
+                        Wei Yang
+                        <sup>†</sup>
+                        
+                    </li><br>
+                    <li>
+                        Huazhong University of Science and Technology
+                    </li><br>
+                    <li>
+                        {tengxu, jiaminchen, pengchen, youjiazhang, yjqing, weiyangcs}@hust.edu.cn
+                    </li>
+                    <br>
+                    <li>
+                        <sup>†</sup>Corresponding Author
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="row">
+                <div class="col-md-4 col-md-offset-4 text-center">
+                    <ul class="nav nav-pills nav-justified">
+                        <li>
+                            <a href="https://arxiv.org/pdf/2405.14455">
+                            <image src="img/mip_paper_image.png" height="60px">
+                                <h4><strong>Paper</strong></h4>
+                            </a>
+                        </li>
+                        <!-- <li>
+                            <a href="https://youtu.be/EpH175PY1A0">
+                            <image src="img/youtube_icon.png" height="60px">
+                                <h4><strong>Video</strong></h4>
+                            </a>
+                        </li> -->
+                        <li>
+                            <a href="">
+                            <image src="img/github.png" height="60px">
+                                <h4><strong>Code</strong></h4>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Abstract
+                </h3>
+                <image src="img/teaser.png" class="img-responsive" alt="overview">
+                    <!-- <iframe src="img/teaser.pdf" class="img-responsive" style="width:100%;height:500px;"></iframe> -->
+                    <br>
+                    
+                <p class="text-justify">
+                    Editing objects within a scene is a critical functionality required across a broad spectrum of applications in computer vision and graphics. As 3D Gaussian Splatting (3DGS) emerges as a frontier in scene representation, the effective modification of 3D Gaussian scenes has become increasingly vital. This process entails accurately retrieve the target objects and subsequently performing modifications based on instructions. Though available in pieces, existing techniques mainly embed sparse semantics into Gaussians for retrieval, and rely on an iterative dataset update paradigm for editing, leading to over-smoothing or inconsistency issues. To this end, this paper proposes a systematic approach, namely TIGER, for coherent text-instructed 3D Gaussian retrieval and editing. In contrast to the top-down language grounding approach for 3D Gaussians, we adopt a bottom-up language aggregation strategy to generate a denser language embedded 3D Gaussians that supports open-vocabulary retrieval. To overcome the over-smoothing and inconsistency issues in editing, we propose a Coherent Score Distillation (CSD) that aggregates a 2D image editing diffusion model and a multi-view diffusion model for score distillation, producing multi-view consistent editing with much  finer details. In various experiments, we demonstrate that our TIGER is able to accomplish more consistent and realistic edits than prior work.
+                </p>
+            </div>
+        </div>
+
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Bottom-up Language Feature Extraction
+                </h3>
+                <p class="text-justify">
+                    To generate the language feature map, we first use MaskCLIP to produce low-resolution patch-level language features. This patch feature encompass multi-scale global information through masked self-distillation features. This is fundamentally different from extracting features by cropping the image first and then inputting it into Clip. We then use FeatUp to upsample these features to pixel-level language features.
+                </p>
+                <video id="v0" width="100%" autoplay loop muted>
+                  <source src="img/local_pipeline_video.mp4" type="video/mp4" />
+                </video>
+                
+                <p class="text-justify">
+                    Although the language feature is sufficient resolution for Gaussian supervision at this stage, they still suffer uneven bounderies. For further refinement, we apply SAM at the finest level, and generate a set of fine binary masks, we then conduct masked average to aggregate all the language features within each mask to obtain refined semantic boundaries.
+                    Notice our masked average process is fundamentally different to the top-down approach as our feature generated from MaskCLIP contains global information that across semantic boundaries. While extracting language features within each mask lead of the absence of context information outside the mask in the final language feature.
+                </p>
+            </div>
+        </div>
+            
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Coherent Score Distillation
+                </h3>
+                <p class="text-justify">
+                    Existing 3D Gaussian editing methods unanimously adopt the iterative dataset updating scheme, which induces over-smoothing and multi-face Janus problem as the editing of each image is independent. To address the issue, we propose a novel Coherent Score Distillation (CSD) that integrate the SDS losses of a 2D image editing diffusion model, i.e., the InstructPix2Pix, and a multi-view diffusion model, i.e., the MVDream, producing multi-view consistent editing with fine details.
+                </p>
+                <video id="v0" style="display: block; margin: 0 auto;" width="80%" autoplay loop muted>
+                    <source src="img/style_pipe_video.mp4" type="video/mp4" />
+                </video><br>
+                <div style="display: flex; justify-content: space-between;">
+                    <img src="img/1.png" class="img-responsive" style="width: 45%;">
+                    <img src="img/2.png" class="img-responsive" style="width: 45%;">
+                </div><br>
+                
+                <p style="text-align:center;">
+                    <image src="img/3.png" class="img-responsive" style="width: 60%; display: block; margin: 0 auto;">
+                </p>
+            </div>
+        </div>
+            
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Results
+                </h3>
+                <p class="text-justify">
+                    TIGER can handle various scenes and prompts. 
+                    In various experiments, we demonstrate that our TIGER is able to accomplish more consistent and realistic edits than prior work.
+                </p>                
+                <br>
+                <video id="v0" width="100%" autoplay loop muted controls>
+                  <source src="img/garden.mp4" type="video/mp4" />
+                </video>
+                <video id="v0" width="100%" autoplay loop muted controls>
+                  <source src="img/stump.mp4" type="video/mp4" />
+                </video>
+                <video id="v0" width="100%" autoplay loop muted controls>
+                    <source src="img/hair.mp4" type="video/mp4" />
+                </video>
+                <video id="v0" width="100%" autoplay loop muted controls>
+                  <source src="img/person.mp4" type="video/mp4" />
+                </video>
+                <!-- <p class="text-justify">
+                    In various experiments, we demonstrate that our TIGER is able to accomplish more consistent and realistic edits than prior work.
+                </p> -->
+                <video id="v0" width="100%" autoplay loop muted controls>
+                  <source src="img/face.mp4" type="video/mp4" />
+                </video>
+                <!-- <video id="v0" width="100%" autoplay loop muted controls>
+                    <source src="img/person1.mp4" type="video/mp4" />
+                </video> -->
+                <video id="v0" width="100%" autoplay loop muted controls>
+                    <source src="img/bear.mp4" type="video/mp4" />
+                </video>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Related links
+                </h3>
+                <!-- <p class="text-justify">
+                    <a href="https://en.wikipedia.org/wiki/Spatial_anti-aliasing">Wikipedia</a> provides an excellent introduction to spatial anti-aliasing techniques.
+                </p>
+                <p class="text-justify">
+                    Mipmaps were introduced by Lance Williams in his paper "Pyramidal Parametrics" (<a href="https://software.intel.com/sites/default/files/m/7/2/c/p1-williams.pdf">Williams (1983)</a>).
+                </p>
+                <p class="text-justify">
+                    <a href="https://dl.acm.org/doi/abs/10.1145/964965.808589">Amanatides (1984)</a> first proposed the idea of replacing rays with cones in computer graphics rendering. 
+                </p>
+                <p class="text-justify">
+                    The closely related concept of <em>ray differentials</em> (<a href="https://graphics.stanford.edu/papers/trd/">Igehy (1999)</a>) is used in most modern renderers to antialias textures and other material buffers during ray tracing.
+                </p>
+                <p class="text-justify">
+                    Cone tracing has been used along with prefiltered voxel-based representations of scene geometry for speeding up indirect illumination calculations in <a href="https://research.nvidia.com/sites/default/files/publications/GIVoxels-pg2011-authors.pdf">Crassin et al. (2011)</a>.
+                </p> -->
+                <p class="text-justify">
+                    <!-- TIGER was implemented on top of the <a href="https://github.com/minghanqin/LangSplat">LangSplat</a> codebase and <a href="https://github.com/minghanqin/LangSplat">LangSplat</a> codebase. -->
+                    Some source code of ours is borrowed from <a href="https://github.com/threestudio-project/threestudio">threestudio</a>, <a href="https://github.com/graphdeco-inria/gaussian-splatting">3DGS</a>, <a href="https://github.com/minghanqin/LangSplat">LangSplat</a> and <a href="https://github.com/hustvl/GaussianDreamer">GaussianDreamer</a>. We sincerely appreciate the excellent works of these authors.
+                </p>
+            </div>
+        </div>
+        
+        <section class="section" id="BibTeX">
+            <div class="container is-max-desktop content">
+              <h3 class="title">BibTeX</h3>
+              <pre><code>    @article{xu2024tiger,
+      title={TIGER: Text-Instructed 3D Gaussian Retrieval and Coherent Editing},
+      author={Xu, Teng and Chen, Jiamin and Chen, Peng and Zhang, Youjia and Yu, Junqing and Yang, Wei},
+      journal={arXiv preprint arXiv:2405.14455},
+      year={2024}
+    }</code></pre>
+            </div>
+        </section>
+        <!-- <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Citation
+                </h3>
+                <div class="form-group col-md-10 col-md-offset-1">
+                    <textarea id="bibtex" class="form-control" readonly>
+@article{xu2024tiger,
+  title={TIGER: Text-Instructed 
+         3D Gaussian Retrieval and Coherent Editing},
+  author={Xu, Teng and Chen, Jiamin and Chen, Peng and 
+          Zhang, Youjia and Yu, Junqing and Yang, Wei},
+  journal={arXiv preprint arXiv:2405.14455},
+  year={2024}
+}</textarea>
+                </div>
+            </div>
+        </div> -->
+
+        <!-- <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Acknowledgements
+                </h3>
+                <p class="text-justify">
+                We thank Janne Kontkanen and David Salesin for their comments on the text, Paul Debevec for constructive discussions, and Boyang Deng for JaxNeRF. 
+                    <br>
+                MT is funded by an NSF Graduate Fellowship.
+                    <br>
+                The website template was borrowed from <a href="http://mgharbi.com/">Michaël Gharbi</a>.
+                </p>
+            </div>
+        </div> -->
+    </div>
+</body>
+</html>

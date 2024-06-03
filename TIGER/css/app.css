@@ -157,3 +157,7 @@ span.highlight {
 	margin-left: 0.5em;
 	margin-right: 0.5em;
 }
+#site-icon {
+  width: 60px;  /* 设置图标宽度 */
+  height: 60px;  /* 设置图标高度 */
+}
